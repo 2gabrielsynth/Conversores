@@ -12,8 +12,7 @@ def ler_pdf(file):
 
             for num_pagina in range(len(ler_pdf.pages)):
                 pagina = ler_pdf.pages[num_pagina]
-                extrai_texto += pagina.extract_text()
-
+                extrai_texto += pagina.extract_text().decode('utf-8')
             return extrai_texto
         else:
             return "Arquivo inválido ou sem páginas"
