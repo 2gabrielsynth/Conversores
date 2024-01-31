@@ -5,7 +5,7 @@ import base64
 
 def ler_pdf(file):
     try:
-        ler_pdf = lpdf.PdfReader(file)
+        ler_pdf = lpdf.PdfFileReader(file)
 
         if len(ler_pdf.pages) > 0:
             extrai_texto = ''
