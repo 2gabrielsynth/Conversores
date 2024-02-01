@@ -1,18 +1,17 @@
 import streamlit as st
 from gtts import gTTS
 import PyPDF2 as lpdf
-import base64
 
 def ler_pdf(file):
     try:
         ler_pdf = lpdf.PdfFileReader(file)
 
-        if len(ler_pdf.pages) > 0:
+        if ler_pdf.numPages > 0:
             extrai_texto = ''
 
-            for num_pagina in range(len(ler_pdf.pages)):
-                pagina = ler_pdf.pages[num_pagina]
-                extrai_texto += pagina.extract_text().decode('utf-8')
+            for num_pagina in range(ler_pdf.numPages):
+                pagina = ler_pdf.getPage(num_pagina)
+                extrai_texto += pagina.extractText()
             return extrai_texto
         else:
             return "Arquivo inválido ou sem páginas"
